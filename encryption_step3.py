@@ -21,8 +21,11 @@ i = 0
 for file_identifier in file_identifiers:
     H2_result = hash.H2(file_identifier)
     H1_result = hash.H1(file_contents[i])
-    print(H1_result)
-    signature = (((H1_result * pow(g1, H2_result, p)) % p) ** a) % p
+    
+    step1 = pow(g1, H2_result, p)
+    step2 = ((H1_result % p) * (step1 % p)) % p
+    signature = pow(step2,a,p)
+    
     encrypted_signatures.append(signature)
     i = i + 1
 
