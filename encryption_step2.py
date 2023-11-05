@@ -27,7 +27,7 @@ def decrypt_message(aes_key, ciphertext):
     return plaintext.decode('utf-8')
 
 # Example message to encrypt
-message = ['Hello, Alice! This is a secret message.', 'my name is Ruhan', 'amar kolijar tukra']
+message = ['Hello, Alice! This is a secret message.', 'my name is Ruhan', 'the name of my country is bangladesh']
 
 encrypted_message = []
 decrypted_message = []
