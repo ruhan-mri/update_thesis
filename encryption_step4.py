@@ -7,6 +7,7 @@ import encryption_step2
 from integer_pairing import cantor, szudzik
 from cryptography.hazmat.primitives.kdf.pbkdf2 import PBKDF2HMAC
 from cryptography.hazmat.primitives import hashes
+import hash
 
 
 
@@ -25,7 +26,11 @@ Io = pow(g1, r, p)
 # cantor.pair(11, 13) # 313
 # cantor.unpair(313) # (11, 13)
 beta = cantor.pair(key_setup1.Dc, key_setup1.Qc)
-beta = pow(beta, -s, p)
+
+beta = pow(beta, s, p)
+beta = hash.H1(beta)
+print(beta)
+beta = pow(beta, -1, p)
 beta = (r * beta) % p
 
 Ii = []
@@ -43,5 +48,10 @@ kdf = PBKDF2HMAC(
 )
 
 key = kdf.derive(int(key_setup2.shared_secret).to_bytes(32, byteorder='big'))
-I_bar = encryption_step2.encrypt_message(key , beta)
-print(I_bar)
+# I_bar = encryption_step2.encrypt_message(key , beta)
+
+beta_dash = cantor.pair(Is, key_setup1.Qc)
+beta_dash = pow(beta_dash, key_setup1.xc, p)
+beta_dash = hash.H1(beta_dash)
+print("bta dash")
+print(beta_dash)

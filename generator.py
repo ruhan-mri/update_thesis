@@ -19,7 +19,8 @@ g1 = public_key_a.public_numbers().x
 g2 = public_key_b.public_numbers().x
 
 # Get the prime modulus (p) from the curve
-p = pow(2, 256) - pow(2, 32) - pow(2, 9) - pow(2, 8) - pow(2, 7) - pow(2, 6) - pow(2, 4) - pow(2, 0)
+# p = pow(2, 256) - pow(2, 32) - pow(2, 9) - pow(2, 8) - pow(2, 7) - pow(2, 6) - pow(2, 4) - pow(2, 0)
+p = 115792089237316195423570985008687907853269984665640564039457584007908834671663
 
 # 'e': lambda x, y: (x * y) % p,  # Define a simple bilinear pairing function
 

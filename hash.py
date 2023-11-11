@@ -15,12 +15,15 @@ def H2(data):
 
     return hash_digest
 
+# integer
 def H1(data):
+    str_data = str(data).encode('utf-8')
     # Create a hashlib object (you can choose a specific hashing algorithm)
-    hash_object = hashlib.sha256()
+    # hash_object = hashlib.sha256()
 
-    # Update the hash with the byte data
-    hash_object.update(data)
+    # # Update the hash with the byte data
+    # hash_object.update(data)
+    hash_object = hashlib.sha256(str_data)
 
     # Calculate the hash digest as an integer
     hash_digest = int(hash_object.hexdigest(), 16) % p
@@ -29,5 +32,6 @@ def H1(data):
 
 # Example usage
 binary_string = "1101010101010101"
-result = H2(binary_string)
+# result = H2(binary_string)
+# result = H1(p)
 # print("Hash result:", result)
